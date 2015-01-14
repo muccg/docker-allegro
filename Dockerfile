@@ -24,11 +24,10 @@ RUN mkdir /data && chown ccg-user:ccg-user /data
 WORKDIR /app
 RUN rm -rf allegrograph
 
-COPY agraph-4.14.1-linuxamd64.64.tar.gz /tmp/
 COPY agraph.cfg /tmp/
 WORKDIR /tmp
 RUN \
-    wget agraph-4.14.1-linuxamd64.64.tar.gz && \
+    wget http://franz.com/ftp/pri/acl/ag/ag4.14.1/linuxamd64.64/agraph-4.14.1-linuxamd64.64.tar.gz && \
     tar zxvf agraph-4.14.1-linuxamd64.64.tar.gz && \
     cd agraph-4.14.1 && \
     ./install-agraph /app/allegrograph --non-interactive --runas-user ccg-user --super-password xxx  && \
