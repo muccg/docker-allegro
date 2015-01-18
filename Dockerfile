@@ -13,12 +13,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN env --unset=DEBIAN_FRONTEND
 
-# create user so we can drop priviliges for entrypoint
-RUN addgroup --gid 1000 ccg-user \
-  && adduser --disabled-password --home /data --no-create-home --system -q --uid 1000 --ingroup ccg-user ccg-user \
-  && mkdir /data \
-  && chown ccg-user:ccg-user /data
-
 WORKDIR /tmp
 RUN \
     wget http://franz.com/ftp/pri/acl/ag/ag4.14.1/linuxamd64.64/agraph-4.14.1-linuxamd64.64.tar.gz \
